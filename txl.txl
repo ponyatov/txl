@@ -6,12 +6,22 @@ comments
 	'#
 end comments
 
+tokens
+	num "[0123456789]+.[0123456789]+"
+	str "\'.*\'"	
+	sym "[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_]+"
+	colon ":"
+end tokens
+
 define program
-	[charlit*]
+	[expr*]
 end define
 
-rule main
-	replace [program]
-		x
-	by x
-end rule
+define expr
+	[sym] | [num] | [colon] | [str]
+end define
+
+function main
+	match [program]
+	_ [program]
+end function
