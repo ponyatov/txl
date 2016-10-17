@@ -6,19 +6,16 @@ comments
 	'#
 end comments
 
-tokens
-	num "[0123456789]+.[0123456789]+"
-	str "\'.*\'"	
-	sym "[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_]+"
-	colon ":"
-end tokens
-
 define program
 	[expr*]
 end define
 
+tokens
+	str "'.*'"
+end tokens
+
 define expr
-	[sym] | [num] | [colon] | [str]
+	[id] | [number] | [str] | :
 end define
 
 function main
