@@ -3,24 +3,15 @@
 % to:	Specctra .dsn
 
 comments
-	#
+	'#
 end comments
 
-tokens
-	sym "[a-zA-Z0-9_]+"
-end tokens
-
-keys
-	B_UNITS mm
-end keys
-
 define program
-	[sym]
+	[charlit*]
 end define
 
 rule main
 	replace [program]
-		any [sym]
-	by 
-		any
+		x
+	by x
 end rule
